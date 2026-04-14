@@ -5,7 +5,10 @@ description: >
   a bundled copy of wolfssh (not yet on the ESP Component Registry).
 
 url: https://github.com/dmatking/esp-wolfssh-client
+repository: https://github.com/dmatking/esp-wolfssh-client
 license: Apache-2.0
+maintainers:
+  - dmatking@yahoo.com
 
 dependencies:
   idf: ">=5.4.0"
