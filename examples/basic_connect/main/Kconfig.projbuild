@@ -1,0 +1,29 @@
+menu "Basic Connect Example"
+
+config EXAMPLE_SSH_HOST
+    string "SSH server hostname or IP"
+    default "192.168.1.1"
+
+config EXAMPLE_SSH_PORT
+    int "SSH server port"
+    default 22
+
+config EXAMPLE_SSH_USER
+    string "SSH username"
+    default "user"
+
+config EXAMPLE_SSH_PASS
+    string "SSH password"
+    default ""
+    help
+        Leave blank to disable password auth (requires key auth instead).
+
+config EXAMPLE_WIFI_SSID
+    string "WiFi SSID"
+    default "myssid"
+
+config EXAMPLE_WIFI_PASS
+    string "WiFi password"
+    default "mypassword"
+
+endmenu

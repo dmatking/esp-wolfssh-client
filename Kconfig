@@ -1,0 +1,38 @@
+menu "ESP wolfSSH Client"
+
+config SSH_CLIENT_TASK_STACK_SIZE
+    int "SSH session task stack size (bytes)"
+    default 16384
+    help
+        Stack size for the FreeRTOS task that drives the SSH session.
+        wolfSSH needs roughly 8 KB minimum; 16 KB provides headroom for
+        the wolfSSL crypto stack used during handshake and auth.
+
+config SSH_CLIENT_TASK_PRIORITY
+    int "SSH session task priority"
+    default 5
+    help
+        FreeRTOS priority for the SSH session task and its writer sub-task.
+
+config SSH_CLIENT_TX_QUEUE_DEPTH
+    int "Transmit queue depth (keystrokes)"
+    default 32
+    help
+        Number of bytes that can be queued for sending before
+        ssh_client_send() starts blocking.
+
+config SSH_CLIENT_CONNECT_TIMEOUT
+    int "Connect timeout (ms)"
+    default 10000
+    help
+        TCP connect + SSH handshake timeout in milliseconds.
+
+config SSH_CLIENT_TERM_COLS
+    int "Default terminal width (columns)"
+    default 80
+
+config SSH_CLIENT_TERM_ROWS
+    int "Default terminal height (rows)"
+    default 24
+
+endmenu
