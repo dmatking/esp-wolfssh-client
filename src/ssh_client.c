@@ -233,8 +233,11 @@ static void session_task(void *arg)
     }
     ESP_LOGI(TAG, "connected");
 
-    // Set PTY dimensions (window-change request immediately after connect)
+    // Set PTY dimensions (window-change request immediately after connect).
+    // wolfSSH_ChangeTerminalSize requires WOLFSSH_TERM && !NO_FILESYSTEM.
+#if defined(WOLFSSH_TERM) && !defined(NO_FILESYSTEM)
     wolfSSH_ChangeTerminalSize(ssh, cols, rows, 0, 0);
+#endif
 
     // ---- Drain any queued bytes, fire on_connected --------------------------
 
@@ -366,8 +369,13 @@ esp_err_t ssh_client_resize(uint16_t cols, uint16_t rows)
     if (!s_session.connected || !s_session.ssh)
         return ESP_ERR_INVALID_STATE;
 
+#if defined(WOLFSSH_TERM) && !defined(NO_FILESYSTEM)
     wolfSSH_ChangeTerminalSize(s_session.ssh, cols, rows, 0, 0);
     return ESP_OK;
+#else
+    (void)cols; (void)rows;
+    return ESP_ERR_NOT_SUPPORTED;
+#endif
 }
 
 void ssh_client_disconnect(void)

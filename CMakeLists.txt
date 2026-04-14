@@ -28,3 +28,20 @@ target_compile_definitions(${COMPONENT_LIB} PUBLIC
     WOLFSSL_USER_SETTINGS
     WOLFSSH_USER_SETTINGS
 )
+
+# The registry wolfssl's default user_settings.h disables RSA and DH on ESP32-P4,
+# and omits WOLFSSL_ED25519_STREAMING_VERIFY — both required by wolfssh.
+# Prepend our wolfssl_config/ to wolfssl's include path so it finds our
+# user_settings.h (which enables RSA+ECC+DH+streaming Ed25519) before its own.
+# Managed components use namespace__name format. Try both forms.
+idf_component_get_property(wolfssl_lib wolfssl__wolfssl COMPONENT_LIB)
+if(NOT wolfssl_lib)
+    idf_component_get_property(wolfssl_lib wolfssl COMPONENT_LIB)
+endif()
+if(wolfssl_lib)
+    target_include_directories(${wolfssl_lib} BEFORE PUBLIC
+        "${CMAKE_CURRENT_LIST_DIR}/wolfssl_config"
+    )
+else()
+    message(WARNING "esp-wolfssh-client: could not locate wolfssl target; HAVE_DH may be missing")
+endif()
