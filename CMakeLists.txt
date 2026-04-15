@@ -43,5 +43,5 @@ if(wolfssl_lib)
         "${CMAKE_CURRENT_LIST_DIR}/wolfssl_config"
     )
 else()
-    message(WARNING "esp-wolfssh-client: could not locate wolfssl target; HAVE_DH may be missing")
+    message(WARNING "esp32-wolfssh-client: could not locate wolfssl target; HAVE_DH may be missing")
 endif()

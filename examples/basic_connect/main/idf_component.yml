@@ -1,4 +1,4 @@
 dependencies:
   idf: ">=5.4.0"
-  esp-wolfssh-client:
+  esp32-wolfssh-client:
     path: "../../.."

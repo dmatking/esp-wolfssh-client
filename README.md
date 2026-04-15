@@ -1,4 +1,4 @@
-# esp-wolfssh-client
+# esp32-wolfssh-client
 
 An ESP-IDF component that wraps [wolfSSH](https://www.wolfssl.com/products/wolfssh/) as a
 FreeRTOS task with a clean callback API.  The hard part — getting wolfSSH to compile and
@@ -31,15 +31,15 @@ In your project's `main/idf_component.yml`:
 
 ```yaml
 dependencies:
-  dmatking/esp-wolfssh-client: ">=0.1.0"
+  dmatking/esp32-wolfssh-client: ">=0.1.0"
 ```
 
 For local development, use a path dependency instead:
 
 ```yaml
 dependencies:
-  esp-wolfssh-client:
-    path: /path/to/esp-wolfssh-client
+  esp32-wolfssh-client:
+    path: /path/to/esp32-wolfssh-client
 ```
 
 ### 2. Initialize wolfSSH once at startup

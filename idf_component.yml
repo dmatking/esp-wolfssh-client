@@ -4,8 +4,8 @@ description: >
   with a clean callback API.  Ships with a pre-tuned user_settings.h for
   ESP32 targets.
 
-url: https://github.com/dmatking/esp-wolfssh-client
-repository: https://github.com/dmatking/esp-wolfssh-client
+url: https://github.com/dmatking/esp32-wolfssh-client
+repository: https://github.com/dmatking/esp32-wolfssh-client
 license: Apache-2.0
 maintainers:
   - dmatking@yahoo.com
